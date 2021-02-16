@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card" shadow="never">
+  <el-card class="box-card" shadow="hover">
     <div slot="header">
       <span>🥳 每日一句</span>
     </div>
