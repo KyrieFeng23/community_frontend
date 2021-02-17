@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
-// import store from '@/store'
-// import { getToken } from '@/utils/auth'
+import store from '@/store'
+import { getToken } from '@/utils/auth'
 
-// 1.创建axios实例
+// 1.创建axios实例,负责向服务器发送各种http请求
 const service = axios.create({
   // 公共接口--这里注意后面会讲,url = base url + request url
   baseURL: process.env.VUE_APP_SERVER_URL,    //在.env文件中定义地址
@@ -14,24 +14,24 @@ const service = axios.create({
 })
 
 // 2.请求拦截器request interceptor
-// service.interceptors.request.use(
-//   config => {
-//     // 发请求前做的一些处理，数据转化，配置请求头，设置token,设置loading等，根据需求去添加
-//     // 注意使用token的时候需要引入cookie方法或者用本地localStorage等方法，推荐js-cookie
-//     if (store.getters.token) {
-//       // config.params = {'token': token}    // 如果要求携带在参数中
-//       // config.headers.token = token;       // 如果要求携带在请求头中
-//       // bearer：w3c规范
-//       config.headers['Authorization'] = 'Bearer ' + getToken()
-//     }
-//     return config
-//   },
-//   error => {
-//     // do something with request error
-//     // console.log(error) // for debug
-//     return Promise.reject(error)
-//   }
-// )
+service.interceptors.request.use(
+  config => {
+    // 发请求前做的一些处理，数据转化，配置请求头，设置token,设置loading等，根据需求去添加
+    // 注意使用token的时候需要引入cookie方法或者用本地localStorage等方法，推荐js-cookie
+    if (store.getters.token) {      //true表示登陆成功
+      // config.params = {'token': token}    // 如果要求携带在参数中
+      // config.headers.token = token;       // 如果要求携带在请求头中
+      // bearer：w3c规范
+      config.headers['Authorization'] = 'Bearer ' + getToken()
+    }
+    return config
+  },
+  error => {
+    // do something with request error
+    // console.log(error) // for debug
+    return Promise.reject(error)
+  }
+)
 
 
 //跨域：前后端端口不一样，需要进行跨域
@@ -39,7 +39,7 @@ const service = axios.create({
 service.defaults.withCredentials = false
 
 
-//interceptors拦截器
+//interceptors拦截器response回应拦截器
 service.interceptors.response.use(
   // 接收到响应数据并成功后的一些共有的处理，关闭loading等
   response => {
