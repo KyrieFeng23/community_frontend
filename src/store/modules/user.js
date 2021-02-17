@@ -1,11 +1,11 @@
-import { getUserInfo, login } from '@/api/auth/auth'
-import {getToken, removeToken, setToken} from '@/utils/auth'
+import { getUserInfo, login, logout } from "@/api/auth/auth"
+import {getToken, removeToken, setToken} from "@/utils/auth"
 
 
 //定义全局数据
 const state = {
     token: getToken(), // token
-    user: '', // 用户对象
+    user: "", // 用户对象
 }
 
 
@@ -13,7 +13,7 @@ const state = {
 //这里改变的是store里的state
 const mutations = {
     SET_TOKEN_STATE: (state, token) => {
-        state.token = token
+        state.token = token;
     },
     SET_USER_STATE: (state, user) => {
         state.user = user
@@ -58,7 +58,23 @@ const actions = {
                 reject(error)
             })
         })
-    }
+    },
+    // 注销
+    logout({ commit, state }) {
+        return new Promise((resolve, reject) => {
+            logout(state.token)
+                .then((response) => {
+                    console.log(response);
+                    commit("SET_TOKEN_STATE", "");
+                    commit("SET_USER_STATE", "");
+                    removeToken();
+                    resolve();
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    },
 }
 
 export default {
