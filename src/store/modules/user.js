@@ -9,7 +9,8 @@ const state = {
 }
 
 
-//state状态的改变必须通过mutation，进行赋值
+//store状态的改变必须通过mutation，进行赋值
+//这里改变的是store里的state
 const mutations = {
     SET_TOKEN_STATE: (state, token) => {
         state.token = token
@@ -23,6 +24,7 @@ const actions = {
         const { name, pass, rememberMe } = userInfo
         //promise是es6的一个语法
         return new Promise((resolve, reject) => {
+            //将前端的用户名、密码、是否记住发送到后端服务器，并获取返回的token
             login({ username: name.trim(), password: pass, rememberMe: rememberMe }).then(response => {
                 const { data } = response
                 //把服务器返回的token存到state的token里了

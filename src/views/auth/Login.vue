@@ -84,7 +84,7 @@ export default {
         //校验一下表单中的数据符不符合上面data中rules的规则
         if (valid) {
           this.loading = true;
-          //想vuex的store发送请求
+          //向vuex的store发送请求
           this.$store
               //user/login对应的是store包下面的index.js里的user模块下的login，ruleform就是那里的userinfo
               .dispatch("user/login", this.ruleForm)
