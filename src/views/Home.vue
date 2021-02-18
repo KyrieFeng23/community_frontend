@@ -23,7 +23,7 @@
 
 import { getBillboard } from "@/api/billboard";
 import CardBar from "@/views/card/CardBar";
-import PostList from "@/views/post/index";
+import PostList from "@/views/post";
 
 export default {
   name: 'Home',

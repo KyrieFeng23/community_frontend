@@ -22,7 +22,7 @@
             tag="router-link"
             :to="{ path: '/' }"
         >
-          🌐 主页
+          <i class="fa fa-home" style="margin-right: 5px"></i>主页
         </b-navbar-item>
       </template>
 
