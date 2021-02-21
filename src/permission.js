@@ -17,7 +17,6 @@ router.beforeEach(async (to, from, next) => {
     document.title = getPageTitle(to.meta.title)
     // determine whether the user has logged in
     const hasToken = getToken();
-
     if (hasToken) {
         if (to.path === '/login') {
             // 已经登录，又要去登录页面，跳转首页

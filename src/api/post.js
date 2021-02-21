@@ -28,3 +28,13 @@ export function getTopic(id) {
         }
     })
 }
+// 获取详情页推荐
+export function getRecommendTopics(id) {
+    return request({
+        url: '/post/recommend',
+        method: 'get',
+        params: {
+            topicId: id
+        }
+    })
+}

@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    //path设置成/就是默认显示的路由地址
     path: '/',
     name: 'Home',
     component: () => import('@/views/Home')
@@ -57,6 +58,8 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const router = new VueRouter({
+  //设置成history可以去掉路径里的#，但是配置到服务器会出404问题，比较麻烦，暂时先注释掉不用
+  // mode:'history',
   routes
 })
 

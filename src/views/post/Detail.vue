@@ -69,6 +69,11 @@
           v-if="flag"
           :user="topicUser"
       />
+      <!--推荐-->
+      <recommend
+          v-if="flag"
+          :topic-id="topic.id"
+      />
     </div>
   </div>
 </template>
@@ -79,9 +84,11 @@ import { mapGetters } from 'vuex'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'
 import Author from "@/views/post/Author";
+import getPageTitle from "@/utils/get-page-title";
+import Recommend from '@/views/post/Recommend'
 export default {
   name: 'TopicDetail',
-  components: { Author },
+  components: { Author,Recommend },
   computed: {
     ...mapGetters([
       'token','user'
@@ -111,7 +118,8 @@ export default {
     async fetchTopic() {
       getTopic(this.$route.params.id).then(response => {
         const { data } = response
-        document.title = data.topic.title
+        // document.title = data.topic.title
+        document.title = getPageTitle(data.topic.title)
         this.topic = data.topic
         this.tags = data.tags
         this.topicUser = data.user
