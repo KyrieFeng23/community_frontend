@@ -10,7 +10,7 @@ import 'buefy/dist/buefy.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/app.css'
-
+import format from 'date-fns'
 import '@/permission'
 import relativeTime from 'dayjs/plugin/relativeTime';
 //国际化
@@ -24,6 +24,11 @@ dayjs.locale('zh-cn') //use local globally
 dayjs().locale('zh-cn').format()   //use local in a specific instance
 
 Vue.prototype.dayjs = dayjs //可以全局使用dayjs
+
+//定义一个名字为date的过滤器，可以把传进来的date数据进行格式化
+Vue.filter('date', (date) => {
+  return format(new Date(date), 'yyyy-MM-dd')
+})
 
 Vue.use(Buefy);
 Vue.use(ElementUI);

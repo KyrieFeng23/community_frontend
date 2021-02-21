@@ -60,7 +60,7 @@
           </div>
         </nav>
       </el-card>
-
+      <lv-comments :slug="topic.id" />
     </div>
 
     <div class="column">
@@ -86,9 +86,11 @@ import 'vditor/dist/index.css'
 import Author from "@/views/post/Author";
 import getPageTitle from "@/utils/get-page-title";
 import Recommend from '@/views/post/Recommend'
+import LvComments from '@/components/Comment/Comments'
+
 export default {
   name: 'TopicDetail',
-  components: { Author,Recommend },
+  components: { Author,Recommend,LvComments },
   computed: {
     ...mapGetters([
       'token','user'
@@ -99,6 +101,7 @@ export default {
       flag: false,
       topic: {
         content: '',
+        //请求路径里的id参数值
         id: this.$route.params.id
       },
       tags: [],
