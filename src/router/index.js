@@ -36,6 +36,15 @@ const routes = [
     path: "/post/:id",
     component: () => import("@/views/post/Detail"),
   },
+  // 编辑
+  {
+    name: 'topic-edit',
+    path: '/topic/edit/:id',
+    component: () => import('@/views/post/Edit'),
+    meta: {
+      title: '编辑'
+    }
+  },
   //404
   {
     path: '/404',
