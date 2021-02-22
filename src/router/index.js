@@ -59,6 +59,13 @@ const routes = [
     component: () => import('@/views/Search'),
     meta: { title: '检索' }
   },
+  // 用户主页
+  {
+    name: 'user',
+    path: '/member/:username/home',
+    component: () => import('@/views/user/Profile'),
+    meta: { title: '用户主页' }
+  },
   //404
   {
     path: '/404',

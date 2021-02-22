@@ -168,7 +168,9 @@ export default {
         })
         return false
       }
-      this.$router.push({ path: '/search?key=' + this.searchKey })
+      //两种方法都可用，第二种更官方一些
+      // this.$router.push({ path: '/search?key=' + this.searchKey })
+      this.$router.push({ path: '/search' ,query:{key:this.searchKey }})
     }
   }
 }
