@@ -10,7 +10,8 @@ import 'buefy/dist/buefy.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/app.css'
-import format from 'date-fns'
+//之前忘记加/format了
+import format  from 'date-fns/format'
 import '@/permission'
 import relativeTime from 'dayjs/plugin/relativeTime';
 //国际化
