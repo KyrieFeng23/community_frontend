@@ -16,3 +16,10 @@ export function pushComment(data) {
         data: data
     })
 }
+
+export function deleteComment(id){
+    return request({
+        url: `/comment/delete/${id}`,
+        method: 'delete'
+    })
+}

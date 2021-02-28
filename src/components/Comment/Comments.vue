@@ -8,6 +8,7 @@
         v-for="comment in comments"
         :key="`comment-${comment.id}`"
         :comment="comment"
+        @updateComments="fetchComments"
     />
   </section>
 </template>
