@@ -1,7 +1,8 @@
 <template>
   <article class="media">
     <figure class="media-left image is-48x48">
-      <img :src="`https://cn.gravatar.com/avatar/${comment.userId}?s=164&d=monsterid`">
+<!--      <img :src="`https://cn.gravatar.com/avatar/${comment.userId}?s=164&d=monsterid`">-->
+      <img :src="`data:image/svg+xml;utf8,${generateImg(comment.userId)}`" style="border-radius: 5px;"/>
     </figure>
     <div class="media-content">
       <div class="content">
@@ -27,9 +28,11 @@
 <script>
 import {mapGetters} from "vuex";
 import {deleteComment} from "@/api/comment";
+import { generateFromString } from 'generate-avatar'
 
 export default {
   name: 'LvCommentsItem',
+  components: { generateFromString },
   props: {
     comment: {
       type: Object,
@@ -64,6 +67,9 @@ export default {
           this.$message.success('删除成功')
         }
       })
+    },
+    generateImg(id){
+      return generateFromString(id);
     }
   }
 }

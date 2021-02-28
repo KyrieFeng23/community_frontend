@@ -16,6 +16,7 @@
     "dayjs": "^1.10.4",
     "element-ui": "^2.15.0",
     "font-awesome": "^4.7.0",
+    "generate-avatar": "^1.4.6",
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
     "vditor": "^3.8.1",

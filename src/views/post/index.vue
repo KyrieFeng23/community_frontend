@@ -8,7 +8,8 @@
             <article v-for="(item, index) in articleList" :key="index" class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`" style="border-radius: 5px;">
+<!--                  <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`" style="border-radius: 5px;">-->
+                  <img :src="`data:image/svg+xml;utf8,${generateImg(item.userId)}`" style="border-radius: 5px;"/>
                 </figure>
               </div>
               <div class="media-content">
@@ -114,10 +115,11 @@
 
 import { getList } from '@/api/post'
 import Pagination from '@/components/Pagination'
+import { generateFromString } from 'generate-avatar'
 
 export default {
   name: 'TopicList',
-  components: { Pagination },
+  components: { Pagination , generateFromString},
   data() {
     return {
       activeName: 'latest',
@@ -145,6 +147,9 @@ export default {
     },
     handleClick(tab) {
       this.init(tab.name)
+    },
+    generateImg(id){
+      return generateFromString(id);
     }
   }
 }
