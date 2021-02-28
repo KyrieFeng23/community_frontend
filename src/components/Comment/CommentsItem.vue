@@ -6,7 +6,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ comment.username }}</strong>
+          <strong>{{ comment.alias }}</strong>
           <small class="ml-2">{{ comment.createTime | date }}</small>
           <br />
           {{ comment.content }}

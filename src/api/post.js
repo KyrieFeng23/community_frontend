@@ -44,6 +44,11 @@ export function update(topic) {
         url: '/post/update',
         method: 'post',
         data: topic
+
+        // params: {
+        //     post : topic.topic,
+        //     tags : topic.tags
+        // }
     })
 }
 
